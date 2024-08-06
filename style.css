@@ -1,0 +1,89 @@
+body {
+    background-color: #101010;
+    margin: 0px;
+    overflow: hidden;
+    display: grid;
+    height: 100vh;
+    place-items: center;
+}
+
+h1 {
+    color: white;
+    font-family: "Rubik", sans-serif;
+    font-size: clamp(2em, 2vw, 4em);
+    font-weight: 400;
+    margin: 0px;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 > .magic {
+    display: inline-block;
+    position: relative;
+}
+
+@keyframes scaleopacity {
+    from,to {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 0.8;
+    }    
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(180deg);
+    }
+}
+
+h1 > .magic > .magic-star {
+    --size: clamp(20px, 1.5vw, 30px);
+    animation: scaleopacity 700ms ease forwards;
+    display: block;
+    height: var(--size);
+    left: var(--star-left);
+    position: absolute;
+    top: var(--star-top);
+    width: var(--size);
+}
+
+h1 > .magic > .magic-star > svg {
+    animation: rotate 1000ms linear infinite;
+}
+
+h1 > .magic > .magic-star > svg > path {
+    display: block;
+    opacity: 0.7;
+    fill: violet;
+}
+
+@keyframes background-pan {
+    from{
+        background-position: 0% center;
+    }
+
+    to {
+        background-position: -200% center;
+    }
+}
+
+h1 > .magic > .magic-text{
+    animation: background-pan 3s linear infinite;
+    background: linear-gradient(
+        to right,
+        purple,
+        violet,
+        pink,
+        purple
+    );
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+}
